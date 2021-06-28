@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>&#10084;HAPPY BIRTHDAY TO DAYOUNG&#10084;</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no">
+    <meta name="title" content="&#10084;HAPPY BIRTHDAY TO DAYOUNG&#10084;">
+    <meta name="publisher" content="Choi ahyoung">
+    <meta name="author-date" content="2021-06-25">
+    <meta name="author" content="Choi ahyoung">
+    <meta name="copyright" content="Choi ahyoung">
+    <meta name="keywords" content="DAYOUNG, dayoung, HAPPY BIRTHDAY TO DAYOUNG, 다영, 생일 축하해, 다영아 생일 축하해">
+    <meta name="description" content="&#10084;HAPPY BIRTHDAY TO DAYOUNG&#10084;">
+    <meta name="robots" content="index,follow">
+    
+    <!-- 오픈 아이콘 -->
+    <!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="./css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css"> -->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/response.css">
+    
+    <!-- 오픈소스 -->
+    <!-- <script src="./js/lib/jquery-1.12.4.min.js"></script>
+    <script src="./js/lib/jquery.touchSwipe.js"></script>
+    <script src="./js/lib/prefixfree.min.js"></script>
+    <script src="./js/lib/jquery.easing.1.3.js"></script> -->
+
+    <!-- 오픈소스  -->
+    <script src="./js/lib/jquery.min.js"></script>
+    <script src="./vue/lib/vue.js"></script>
+    <!-- <script src="./vue/lib/axios.min.js"></script>
+    <script src="./vue/lib/vue-router.js"></script> -->
+
+    <!--[if lte IE 9]>
+        <script src="./js/lib/IE9.js"></script>
+    <![endif]-->
+
+    <!--[if lte IE 8]>
+        <script src="./js/lib/html5shiv.min.js"></script>
+        <script src="./js/lib/jqPIE.js"></script>
+        <script src="./js/lib/PIE.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/ie8.css">
+    <![endif]-->
+
+    <!--[if lte IE 7]>
+        <link rel="stylesheet" type="text/css" href="./css/ie7.css">
+    <![endif]-->
+
+</head>
+<body id="intro">
+<ul id="skip">
+    <li><a href="#header" class="smoothBtn" title="HOME">Go to HOME</a></li>
+    <li><a href="#section2" class="smoothBtn" title="LETTER">Go to LETTER</a></li>
+    <li><a href="#section3" class="smoothBtn" title="GIFT">Go to GIFT</a></li>
+    <li><a href="#section4" class="smoothBtn" title="HBD">Go to HBD</a></li>    <!-- &#9829; / 검정하트    /   <i class="fas fa-birthday-cake"></i>  -->
+</ul>
+
+<div id="wrap">
+
+    <!-- 헤더영역 시작 -->
+
+    <header id="header">
+        <div class="wrap">
+            <div class="gap">
+                <div class="container">
+                    
+                    <!-- logo template  -->
+                    <logo-component v-for='item in imglogo' :propslogo="item"></logo-component>
+
+                    <!-- Navigation template -->
+                    <nav id="nav">
+                        <ul>
+                            <nav-component v-for='item in gnb'  v-bind:propsnav='item'></nav-component>
+                        </ul>
+                    </nav>
+                    
+                </div>
+            </div>
+        </div>
+    </header>    
+
+    <script>
+
+    const logoComponent = {
+        props:['propslogo'],
+        template:`
+            <div class="logo">
+                <a href="javascript:" class="logo-btn">
+                    <img v-bind:src="propslogo.img" alt="logo">
+                </a>
+            </div>
+        `
+    }
+
+    const navComponent = {
+        props:['propsnav'],
+        template:`
+            <li>
+                <a href="javascript:" class="main-btn">{{ propsnav.menu }}</a>
+            </li>
+        `
+    }
+
+    const header = new Vue({
+        el:'#header',
+        data:{
+            imglogo:[
+                {img:'./img/img1.jpg'}
+            ],
+            gnb:[
+                {menu:'LETTER'},
+                {menu:'GIFT'},
+                {menu:'HBD'}
+            ]
+
+        },
+        components:{
+            'logo-component': logoComponent,
+            'nav-component': navComponent
+        }
+
+    });
+
+    </script>
+
+    <!-- 헤더영역 끝 -->
+
+
+    <!-- 메인영역 시작 -->
+
+    <main id="main">
+
+        <section id="section1">
+            <div class="changing-title">
+                <h1>생일 축하해</h1>
+            </div>
+        </section>
+
+        <div id="sec2Wrap">
+            <section2-component  v-on:emitevent='updateFiledata' v-bind:propssec2='filedata'></section2-component>
+        </div>
+
+        <section id="section3">
+            <div class="wrap">
+                <div class="gap">
+                    <div class="container">
+                        <h2>두근두근~ 두근두근~<br><br><strong>당신의 선택은?</strong></h2>
+                        <ul class="fixedclear">
+                            <li>
+                                <div class="box">
+                                    <a href="javascript:" class="btn1"><img id="gift1" src="./img/gift1.png" alt="gift1" onclick="gift1Img()"></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="box">
+                                    <a href="javascript:" class="btn1"><img id="gift2" src="./img/gift1.png" alt="gift1" onclick="gift2Img()"></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="box">
+                                    <a href="javascript:" class="btn1"><img id="gift3" src="./img/gift1.png" alt="gift1" onclick="gift3Img()"></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section4">
+            <section4-component></section4-component>
+        </section>
+
+        <audio autoplay loop controls>
+            <source src="./audio/canon.mp3" type="audio/mp3">
+        </audio>
+    </main>
+
+    <script>
+        // section1
+        class ChangingTitle {
+            constructor(x = null) {
+                this.node = x;
+                this.letterfy(this.node.querySelector('h1'));
+            }
+            letterfy(node) {
+                let text = node.innerText;
+                node.innerText = '';
+                node.classList.add('current');
+                for (let c in text) {
+                let span = document.createElement('span');
+                span.innerText = text[c];
+                span.classList.add('letter', 'in');
+                span.style.animationDelay = `${c * 0.1}s`;
+                node.appendChild(span);
+                }
+            }
+            changeText(newText) {
+                let oldTitle = this.node.querySelector('.current');
+                let i = 0;
+                for (let letter of oldTitle.children) {
+                letter.style.animationDelay = `${i++ * 0.1}s`;
+                letter.classList.remove('in');
+                letter.classList.add('out');
+                }
+                oldTitle.classList.remove('current');
+                let newTitle = document.createElement('h1');
+                newTitle.classList.add('current');
+                for (let c in newText) {
+                let span = document.createElement('span');
+                span.innerText = newText[c];
+                span.classList.add('letter', 'in');
+                span.style.animationDelay = `${c * 0.1 + 0.5}s`;
+                newTitle.appendChild(span);
+                }
+                this.node.appendChild(newTitle);
+                setTimeout(this.removeNode(oldTitle), 2000);
+            }
+            removeNode(x) {
+                return () => {
+                x.remove();
+                };
+            }}
+        ;
+
+        let ct = new ChangingTitle(document.querySelector('.changing-title'));
+        const texts = ['생일 축하해', 'Happy Birthday', 'お誕生日おめでとう', '¡Feliz cumpleaños!', 'Joyeux anniversaire'];
+        let count = 0;
+        setInterval(() => {
+        ct.changeText(texts[++count % texts.length]);
+        }, 3000);
+
+
+
+        // section2
+        const section2Component = {
+            props:['propssec2'],
+            template:`
+                <section id="section2">
+                    <div class="wrap">
+                        <div class="gap">
+                            <div class="container">
+                                <h2>
+                                    HAPPY BIRTHDAY,<br>
+                                    DAYOUNG
+                                </h2>
+                                <h3>내 마음을 담아서 편지를 보냅니다.</h3>
+                                <p>
+                                    <span><a href="javascript:" v-on:click="popup(\'./popup/main\' + propssec2 + \'.html\', \'Window Popup\' + propssec2 + \' \')">클릭해봐!!</a></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `,
+            methods:{
+                popup:function(y, z){
+                    this.$emit('emitevent'); //에밋 메서드 실행 이벤트 생성
+                    
+                    var url = y;
+                    var name = z;
+                    var option = "width=500, height=600, top=0, left=0";
+                        
+                        // 팝업창 
+                        window.open(url, name, option);
+
+                        console.log( y, z );
+                }
+            }      
+        }
+
+        const main = new Vue({
+            el:'#sec2Wrap',
+            data:{
+                filedata:100
+            },
+            components:{
+                'section2-component': section2Component
+            },
+            methods:{
+                updateFiledata: function(){
+                    if( this.filedata >= 300 ){
+                        this.filedata = 100;
+                    }
+                    else{
+                        this.filedata +=100 ;
+                    }
+                }
+            },
+            mounted:function(){
+
+                //화면에 부착이 완료된 상태
+                function javascriptFn(){
+                    var section2 = document.querySelector('#section2');                
+                    var winH = window.innerHeight; //창높이     
+                    var sec2H = section2.style.height; //창높이 
+        
+                    function resizeFn(){                
+                        winH = window.innerHeight; //창높이                
+                        // section2.style = 'height:' + winH + 'px';
+                        section2.style.height = winH + 'px';
+                        sec2H = section2.style.height; //창높이 
+        
+                        console.log('섹션2의 높이는 : ', sec2H);
+
+                    }
+                    resizeFn(); //마운트 완료시 실행 1회 
+                    window.addEventListener('resize',resizeFn); 
+                    //창 크기 변경시 즉각 반응하여 함수 호출 실행하는 이벤트 리스너
+                } 
+                javascriptFn();
+                
+
+                function jQueryFn(){
+
+                    //제이쿼리
+                    var section2 = $('#section2');
+                    var winH = $(window).innerHeight();
+
+                        function resizeFn(){
+                            winH = $(window).innerHeight();
+                            section2.css({ height: winH });
+                        }
+                        resizeFn();
+                        $(window).resize(function(){
+                            resizeFn();
+                        });
+                }
+                // jQueryFn();
+            }
+        });
+        
+        let a = 0;
+
+        setTimeout(init, 100);
+
+        function init(){  
+            $("#section2 .container") .stop().animate({left: -1000},1000, function(){
+                $("#section2 .container") .stop().animate({left: 0},2000);
+            });
+        }
+
+        function s2AnimationFormatFn(){  
+            $("#section2 .container") .stop().animate({left: -1000},1000);
+        }
+
+        function s2AnimationFn(){  
+            $("#section2 .container") .stop().animate({left: 0},2000);
+        }
+
+        $(window).scroll(function(){
+            if( $(this).scrollTop() < 300 ){
+                if(a==1){  
+                    a=0;
+                    s2AnimationFormatFn();
+                }
+            }
+            if( $(this).scrollTop() >= 300 ){
+                if(a==0){  
+                    a=1;   
+                    s2AnimationFn();
+                }
+            }
+        });
+
+
+        
+        // section3
+        let gift1 = document.getElementById("gift1");
+        let gift2 = document.getElementById("gift2");
+        let gift3 = document.getElementById("gift3");
+
+        function gift1Img(){
+
+            if(gift1.getAttribute('src')=='./img/gift1.png')
+            {
+                gift1.src = './img/gift2.png';    
+            }
+            else if(gift1.getAttribute('src')=='./img/gift2.png')
+            {
+                gift1.src = './img/no3.jpg';
+            }
+            else if(gift1.getAttribute('src')=='./img/no3.jpg')
+            {
+                gift1.src = './img/gift1.png';
+            }
+        }
+
+        function gift2Img(){
+
+            if(gift2.getAttribute('src')=='./img/gift1.png')
+            {
+                gift2.src = './img/gift2.png';    
+            }
+            else if(gift2.getAttribute('src')=='./img/gift2.png')
+            {
+                gift2.src = './img/no2.jpg';
+            }
+            else if(gift2.getAttribute('src')=='./img/no2.jpg')
+            {
+                gift2.src = './img/gift1.png';
+            }
+        }
+
+        function gift3Img(){
+
+            if(gift3.getAttribute('src')=='./img/gift1.png')
+            {
+                gift3.src = './img/gift2.png';    
+            }
+            else if(gift3.getAttribute('src')=='./img/gift2.png')
+            {
+                gift3.src = './img/no1.jpg';
+            }
+            else if(gift3.getAttribute('src')=='./img/no1.jpg')
+            {
+                gift3.src = './img/gift1.png';
+            }
+        }
+
+        
+        let b = 0;
+
+        setTimeout(init, 100);
+
+        function init(){  
+            $("#section3 .container").stop().animate({right:-1000},1000, function(){
+                $("#section3 .container").stop().animate({right:0},2000);
+            });
+        }
+
+        function s3AnimationFormatFn(){  
+            $("#section3 .container").stop().animate({right:-1000},1000);
+        }
+
+        function s3AnimationFn(){  
+            $("#section3 .container").stop().animate({right:0},2000);
+        }
+
+        $(window).scroll(function(){
+            if( $(this).scrollTop() < $("#section2").offset().top+200 ){
+                if(b==1){  
+                    b=0;
+                    s3AnimationFormatFn();
+                }
+            }
+            if( $(this).scrollTop() >= $("#section2").offset().top+200 ){
+                if(b==0){  
+                    b=1;   
+                    s3AnimationFn();
+                }
+            }
+        });
+
+
+        
+        // section4
+        let section4Component = {
+            template:`
+                <div class="wrap">
+                    <div class="gap">
+                        <div class="container">
+                            <div class="content">
+                                <video class="mainVideo" autoplay loop muted playsinline poster="./img/img2.jpg">
+                                    <source src="./video/audi1.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+        }
+        const section4 = new Vue({
+            el:'#section4',
+            data:{
+                comp1:'component-1'
+            },
+            components:{
+                'section4-component': section4Component
+            }
+        });
+
+        let t = 0;
+
+        setTimeout(init, 100);
+
+        function init(){  
+            $("#section4 .content").stop().animate({opacity:0},1000, function(){
+                $("#section4 .content").stop().animate({opacity:1},2000);
+            });
+        }
+
+        function s4AnimationFormatFn(){  
+            $("#section4 .content").stop().animate({opacity:0},1000);
+        }
+
+        function s4AnimationFn(){  
+            $("#section4 .content").stop().animate({opacity:1},2000);
+        }
+
+        $(window).scroll(function(){
+            if( $(this).scrollTop() <  $("#section3").offset().top+200 ){
+                if(t==1){  
+                    t=0;
+                    s4AnimationFormatFn();
+                }
+            }
+            if( $(this).scrollTop() >= $("#section3").offset().top+200 ){
+                if(t==0){  
+                    t=1;   
+                    s4AnimationFn();
+                }
+            }
+        });
+
+    </script>
+
+    <!-- 메인영역 끝 -->
+
+
+    <!-- 푸터영역 시작 -->
+
+    <footer id="footer">
+        <div class="row">
+            <div class="wrap">
+                <ul>
+                    <li>
+                        <address>
+                            <span>축하 메시지 보내주실꺼죠?!</span><i>|</i>
+                            <span>H.P : <a href="tel:01063140006" title="전화걸기" target="_blank">010-6314-0006</a></span>
+                        </address>
+                    </li>
+                    <li>
+                        <span><a href="mailto:342589@naver.com" title="E-mail 보내기" target="_blank">342589@naver.com</a></span>
+                        <span><a href="https://www.kakaocorp.com/page/service/service/KakaoTalk" title="KAKAO TALK 보내기" target="_blank"><img src="./img/kakaotalk.png" alt=""></a></span>
+                        <span><a href="https://line.me/ko/" title="LINE 보내기" target="_blank"><img src="./img/LINE.png" alt=""></a></span>
+                    </li>
+                    <li>
+                        <span>
+                            Copyright &copy; by Ahyoung Choi. All Rights Reserved.
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

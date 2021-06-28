@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+@media all and (max-width:510px){
+    #wrap #main #section3 .wrap .gap .container h2 {font-size:30px;}
+    #wrap #main #section3 .wrap .gap .container h2 strong {font-size:40px;}
+}
+
+@media all and (max-width:450px){
+    #wrap #header .wrap .gap .container #nav ul li {margin:0 15px;}
+
+    #wrap #main #section2 .wrap .gap .container h2 {font-size:55px;}
+    #wrap #main #section2 .wrap .gap .container h3 {font-size:13px;}
+    #wrap #main #section2 .wrap .gap .container p span a {padding:0 20px;}
+}

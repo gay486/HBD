@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>&#10084;HAPPY BIRTHDAY TO DAYOUNG&#10084;</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 오픈소스  -->
+    <script src="../js/lib/jquery.min.js"></script>    
+    <script src="../vue/lib/vue.js"></script>
+
+<style>
+    #wrap #popup .popup1 {
+        text-align:center;margin-top:80px;
+    }
+    #wrap #popup .popup1 a {
+        display:inline-block;line-height:100%;
+    }
+    #wrap #popup .popup1 a img {
+        width:100%;
+    }
+
+</style>
+
+</head>
+<body>
+<div id="wrap">
+
+   <div id="popup">
+        <data-comp v-for='item in popupData' v-bind:propspopup1='item'></data-comp>
+   </div>
+
+   <script>
+
+    const dataComp = {
+        props:['propspopup1'],
+        template:`
+            <div class="popup1">
+                <a href="javascript:" class="popup1-btn">
+                    <img v-bind:src="propspopup1.img" alt="popup1">
+                </a>
+            </div>
+        `
+    }
+
+    const popup = new Vue({
+        el:'#popup',
+        data:{
+            popupData:[
+                {img:'../img/popup.jpg'}
+            ]
+        },
+        components:{
+            'data-comp': dataComp
+        }
+    });
+
+   </script>
+
+
+
+</div>
+</body>
+</html>
